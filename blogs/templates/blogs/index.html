@@ -1,0 +1,21 @@
+{%extends 'blogs/base.html'%}
+
+{% block content %}
+    <div class="p-3 mb-4 bg-light border rounded-3">
+        <div class="container-fluid py-4">
+            <h1 class="display-3">Anybody Can Blog.</h1>
+            <p class="lead">Here you can share your thoughts on any topic you like to blog about
+                and discuss with fellow bloggers in comments</p>
+            <p>Top Blogs - </p>    
+            <ul class="list-group border-bottom pb-2 mb-4">
+                {% for blog in blogs %}
+                    <li class="list-group-item border-0">
+                        <a href="{% url 'blogs:blog' blog.id %}">{{ blog.topic }}</a>
+                    </li>
+                {% empty %}
+                    <li class="list-group-item border-0">No blog have been added yet.</li>
+                {% endfor %}
+            </ul>   
+        </div>
+    </div>
+{% endblock content %}    
